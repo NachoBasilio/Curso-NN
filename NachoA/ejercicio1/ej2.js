@@ -10,12 +10,10 @@ nota3 = parseInt(nota3);
 
 let res = parseFloat((nota1 + nota2 + nota3) / 3);
 
-if (res >=6){
+if (res >=6 && res < 10){
     document.write(`Su promedio es: ${res}. Usted a <b>Aprobado</b>`);
     }else if (res<6) {
     document.write(`Su promedio es: ${res}. Usted a <b>Desaprobado</b>`)
-    }else if (res>10){
-    document.write("Ha ingresado valores erroneos");
     }
     else{
         document.write("Ha ingresado valores erroneos");
