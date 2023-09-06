@@ -1,7 +1,7 @@
 const root = document.getElementById("root");
 
 
-const tabla = document.createElement("div")
+const tabla = document.createElement("form")
 
 const text1 = document.createElement("p");
 text1.innerText = "Elija titulo";
@@ -20,6 +20,19 @@ const seleccImagen = document.createElement("input");
 seleccImagen.type="file";
 
 
+tabla.addEventListener("submit", (e)=>{
+    e.preventDefault()
+    const imagen = document.createElement("img");
+    
+
+    
+
+    const url = URL.createObjectURL(e.target[2].files[0])
+    imagen.src = url;
+    
+    console.log(imagen)
+    root.appendChild(imagen)
+})
 
 
 //creador de nodo
@@ -48,12 +61,14 @@ const creaNodoFormulario = (titulo,descripcion)=>{
 
 
 
+
 tabla.appendChild(text1);
 tabla.appendChild(input1);
 tabla.appendChild(text2);
 tabla.appendChild(input2);
 tabla.appendChild(seleccImagen);
 tabla.appendChild(submitEnviar);
+
 
 
 root.appendChild(tabla);
