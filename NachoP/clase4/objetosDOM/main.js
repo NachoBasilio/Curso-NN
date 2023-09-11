@@ -27,68 +27,92 @@ const titulos =[
 class NodoMadre{
   constructor(etiqueta){
     this.etiqueta = etiqueta
+    
   }
 
   creadora(){
     return document.createElement(this.etiqueta)
   }
 
+
 }
 
 
-class NodoTitulo extends NodoMadre{
-  constructor(etiqueta){
+// class NodoTitulo extends NodoMadre{
+//   constructor(etiqueta){
+//     super(etiqueta)
+//     this.nodo = null
+//   } 
+
+
+//   unSoloH1(){
+//     if(this.etiqueta == "h1"){
+//       return true
+//     }
+//     return false
+//   }
+
+//   imprenta(contenido){
+//     if(contenido != "" && contenido != undefined){
+//       this.nodo.innerText = contenido
+//       console.log(contenido)
+//     }else{
+//       //throw new Error("Esta vacio el titulo")
+//     }
+//   }
+
+//   creadora(){
+//     this.nodo = document.createElement(this.etiqueta)
+//     return nodo
+//   }
+
+
+// }
+
+class NodoIMG extends NodoMadre{
+  constructor(etiqueta, url){
     super(etiqueta)
-    this.nodo = null
-  } 
+    this.url = url
+    
+  }
 
   creadora(){
-    this.nodo = document.createElement(this.etiqueta)
-    return this.nodo
-  }
-
-  unSoloH1(){
-    if(this.etiqueta == "h1"){
-      return true
-    }
-    return false
-  }
-
-  imprenta(contenido){
-    if(contenido != "" && contenido != undefined){
-      this.nodo.innerText = contenido
-      console.log(contenido)
-    }else{
-      //throw new Error("Esta vacio el titulo")
-    }
+    const imgNodo = document.createElement(this.etiqueta)
+    imgNodo.src = this.url
+    return imgNodo
   }
 
 }
 
 
-let bandera = false
-titulos.forEach((titulo)=>{
-  const tituloObj = new NodoTitulo(titulo.h)//objeto
+// let bandera = false
+// titulos.forEach((titulo)=>{
+//   const tituloObj = new NodoTitulo(titulo.h)//objeto
 
 
-  if(bandera){
-    if(tituloObj.unSoloH1()){
-      return
-    } else{
-      const tituloVariable = tituloObj.creadora() //refe a nodo
-      tituloObj.imprenta(titulo.titulo)
-      app.appendChild(tituloVariable)
-    }
-  }
+//   if(bandera){
+//     if(tituloObj.unSoloH1()){
+//       return
+//     } else{
+//       const tituloVariable = tituloObj.creadora() //refe a nodo
+//       tituloObj.imprenta(titulo.titulo)
+//       app.appendChild(tituloVariable)
+//     }
+//   }
 
 
-  const tituloVariable = tituloObj.creadora() //refe a nodo
-  tituloObj.imprenta(titulo.titulo)
-  app.appendChild(tituloVariable)
+//   const tituloVariable = tituloObj.creadora() //refe a nodo
+//   tituloObj.imprenta(titulo.titulo)
+//   app.appendChild(tituloVariable)
 
 
-  if(tituloObj.unSoloH1()){
-    bandera = true
-  } 
+//   if(tituloObj.unSoloH1()){
+//     bandera = true
+//   } 
   
-})
+// })
+
+
+const img = new NodoIMG("img","https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/8/89/Pikachu.jpg")
+
+app.appendChild(img.creadora())
