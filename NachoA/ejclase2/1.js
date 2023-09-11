@@ -23,9 +23,6 @@ seleccImagen.type="file";
 tabla.addEventListener("submit", (e)=>{
     e.preventDefault()
     const imagen = document.createElement("img");
-    
-
-    
 
     const url = URL.createObjectURL(e.target[2].files[0])
     imagen.src = url;
@@ -33,31 +30,6 @@ tabla.addEventListener("submit", (e)=>{
     console.log(imagen)
     root.appendChild(imagen)
 })
-
-
-//creador de nodo
-const creaNodoFormulario = (titulo,descripcion)=>{
-    const nombreTitulo = document.createElement("h4");
-    const textoDescripcion = document.createElement("p");
-
-    const contenedor = document.createElement("div");
-    const img = document.createElement("input");
-    img.type="text";
-    
-
-    const separador = document.createElement("hr");
-
-    nombreTitulo.innerText = titulo;
-    textoDescripcion.innerText = descripcion;
-
-    contenedor.appendChild(nombreTitulo);
-    contenedor.appendChild(textoDescripcion);
-    contenedor.appendChild(img);
-    contenedor.appendChild(separador);
-
-    return (contenedor);
-    
-}
 
 
 
