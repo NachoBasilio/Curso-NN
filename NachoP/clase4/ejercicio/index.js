@@ -13,37 +13,42 @@ class Todo {
     }
 
     
-    tituladora(nodo){
-        const p = document.createElement("p")
-        p.innerText = this.desc
-        nodo.appendChild(p)
+    tituladora(p){
+        p.innerText = this.desc 
     }
 
-    pintadora(nodo){
-        const img = document.createElement("img")
+    pintadora(img){
         img.src = this.img
-        nodo.appendChild(img)
     }
 
-    completadora(nodo){
+    completadora(p){
         if(this.comp){
-            const p = document.createElement("p")
             p.innerText = "Tabien"
-            nodo.appendChild(p)
+            
         }else{
-            const p = document.createElement("p")
             p.innerText = "Tamal"
-            nodo.appendChild(p)
         }
 
     }
 
     credora(){
         const nodo = document.createElement("div")
+        const p = document.createElement("p")
+        const p2 = document.createElement("p")
+        const img = document.createElement("img")
         
-        this.tituladora(nodo)
-        this.pintadora(nodo)
-        this.completadora(nodo)
+        
+
+        
+        this.tituladora(p)
+        this.pintadora(img)
+        this.completadora(p2)
+
+
+        nodo.appendChild(p)
+        nodo.appendChild(img)
+        nodo.appendChild(p2)
+        
         return nodo
     }
 
