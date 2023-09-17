@@ -1,13 +1,31 @@
 import "./style.css"
 
 const app = document.getElementById("app")
+let modal = false
 
 const contenedorProductos = document.createElement("div")
 contenedorProductos.classList.add("contenedor-mayor")
 
 
+const modalContenedor = document.createElement("div")
+modalContenedor.classList.add("carrito-contenedor")
+modalContenedor.classList.add("modalOff")
+
+
 const contenedorCarrito = document.createElement("div")
 contenedorCarrito.classList.add("carrito")
+
+const carritoTitulo = document.createElement("h1")
+carritoTitulo.innerText = "Carrito"
+
+
+const botonCerra = document.createElement("button")
+botonCerra.innerText = "cerrar"
+
+modalContenedor.append(carritoTitulo)
+modalContenedor.append(contenedorCarrito)
+modalContenedor.append(botonCerra)
+
 const carrito = []
 
 const figurasPokemon = [
@@ -141,21 +159,20 @@ class NodoFigura {
   creadoraDeProductosCarrito(nodoPadre, evento){
     const contenedor = document.createElement("div")
     contenedor.classList.add("contenedor")
+    contenedor.classList.add("contenedor-carrito")
 
     const nombreNodo = document.createElement("h3")
     const precioNodo = document.createElement("p")
     const imagenNodo = document.createElement("img")
-    const tipoNodo = document.createElement("p")
     const stockNodo = document.createElement("p")
-    const generacionNodo = document.createElement("generacion")
+
 
     
     nombreNodo.innerText = this.nombre
     precioNodo.innerText = this.precio
     imagenNodo.src = this.imagen
-    tipoNodo.innerText = this.tipo
     stockNodo.innerText = this.stockCarrito 
-    generacionNodo.innerText = this.generacion
+
 
 
 
@@ -168,9 +185,9 @@ class NodoFigura {
     contenedor.appendChild(nombreNodo)
     contenedor.appendChild(precioNodo)
     contenedor.appendChild(imagenNodo)
-    contenedor.appendChild(tipoNodo)
+
     contenedor.appendChild(stockNodo)
-    contenedor.appendChild(generacionNodo)
+
     contenedor.appendChild(boton)
  
     nodoPadre.appendChild(contenedor)
@@ -231,9 +248,6 @@ const eventoAgregar = (referencia)=>{
     referencia.stockCarrito = referencia.stockCarrito + 1
     agregarAlCarrito()
   }
-
-  
-  
 }
 
 arrayNodos.forEach(objeto=>{
@@ -242,6 +256,29 @@ arrayNodos.forEach(objeto=>{
 
 
 
+const botonCarrito = document.createElement("button")
+botonCarrito.innerText = "carrito"
+
+botonCarrito.addEventListener("click", ()=>{
+  modalContenedor.classList.remove("modalOff")
+})
+
+
+window.addEventListener("dblclick", function(e) {
+
+  if (!modalContenedor.contains(e.target)) { 
+    modalContenedor.classList.add("modalOff")
+  }
+})
+
+botonCerra.addEventListener("click", ()=>{
+  modalContenedor.classList.add("modalOff")
+})
+
+
+
+
 
 app.appendChild(contenedorProductos)
-app.appendChild(contenedorCarrito)
+app.appendChild(modalContenedor)
+app.appendChild(botonCarrito)
