@@ -9,6 +9,7 @@ contenedorProductos.classList.add("contenedor-mayor")
 
 const modalContenedor = document.createElement("div")
 modalContenedor.classList.add("carrito-contenedor")
+modalContenedor.classList.add("modalOff")
 
 
 const contenedorCarrito = document.createElement("div")
@@ -18,9 +19,12 @@ const carritoTitulo = document.createElement("h1")
 carritoTitulo.innerText = "Carrito"
 
 
+const botonCerra = document.createElement("button")
+botonCerra.innerText = "cerrar"
+
 modalContenedor.append(carritoTitulo)
 modalContenedor.append(contenedorCarrito)
-//contenedorCarrito.classList.add("modalOff")
+modalContenedor.append(botonCerra)
 
 const carrito = []
 
@@ -252,6 +256,29 @@ arrayNodos.forEach(objeto=>{
 
 
 
+const botonCarrito = document.createElement("button")
+botonCarrito.innerText = "carrito"
+
+botonCarrito.addEventListener("click", ()=>{
+  modalContenedor.classList.remove("modalOff")
+})
+
+
+window.addEventListener("dblclick", function(e) {
+
+  if (!modalContenedor.contains(e.target)) { 
+    modalContenedor.classList.add("modalOff")
+  }
+})
+
+botonCerra.addEventListener("click", ()=>{
+  modalContenedor.classList.add("modalOff")
+})
+
+
+
+
 
 app.appendChild(contenedorProductos)
 app.appendChild(modalContenedor)
+app.appendChild(botonCarrito)
