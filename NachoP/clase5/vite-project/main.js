@@ -1,30 +1,29 @@
 import "./style.css"
 
 const app = document.getElementById("app")
-let modal = false
 
 const contenedorProductos = document.createElement("div")
 contenedorProductos.classList.add("contenedor-mayor")
 
 
-const modalContenedor = document.createElement("div")
-modalContenedor.classList.add("carrito-contenedor")
-modalContenedor.classList.add("modalOff")
+// const modalContenedor = document.createElement("div")
+// modalContenedor.classList.add("carrito-contenedor")
+// modalContenedor.classList.add("modalOff")
 
 
 const contenedorCarrito = document.createElement("div")
 contenedorCarrito.classList.add("carrito")
 
-const carritoTitulo = document.createElement("h1")
-carritoTitulo.innerText = "Carrito"
+// const carritoTitulo = document.createElement("h1")
+// carritoTitulo.innerText = "Carrito"
 
 
-const botonCerra = document.createElement("button")
-botonCerra.innerText = "cerrar"
+// const botonCerra = document.createElement("button")
+// botonCerra.innerText = "cerrar"
 
-modalContenedor.append(carritoTitulo)
-modalContenedor.append(contenedorCarrito)
-modalContenedor.append(botonCerra)
+// modalContenedor.append(carritoTitulo)
+// modalContenedor.append(contenedorCarrito)
+// modalContenedor.append(botonCerra)
 
 const carrito = []
 
@@ -256,29 +255,29 @@ arrayNodos.forEach(objeto=>{
 
 
 
-const botonCarrito = document.createElement("button")
-botonCarrito.innerText = "carrito"
+// const botonCarrito = document.createElement("button")
+// botonCarrito.innerText = "carrito"
 
-botonCarrito.addEventListener("click", ()=>{
-  modalContenedor.classList.remove("modalOff")
-})
+// botonCarrito.addEventListener("click", ()=>{
+//   modalContenedor.classList.remove("modalOff")
+// })
 
 
-window.addEventListener("dblclick", function(e) {
+// window.addEventListener("dblclick", function(e) {
 
-  if (!modalContenedor.contains(e.target)) { 
-    modalContenedor.classList.add("modalOff")
-  }
-})
+//   if (!modalContenedor.contains(e.target)) { 
+//     modalContenedor.classList.add("modalOff")
+//   }
+// })
 
-botonCerra.addEventListener("click", ()=>{
-  modalContenedor.classList.add("modalOff")
-})
+// botonCerra.addEventListener("click", ()=>{
+//   modalContenedor.classList.add("modalOff")
+// })
 
 
 
 
 
 app.appendChild(contenedorProductos)
-app.appendChild(modalContenedor)
+app.appendChild(contenedorCarrito)
 app.appendChild(botonCarrito)
