@@ -33,7 +33,7 @@ modal.appendChild(botonModal)
 
 
 
-const carrito = []
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [] 
 
 
 class NodoFigura {
@@ -126,19 +126,35 @@ class NodoFigura {
   
 }
 
-
+let arrayNodos = JSON.parse(localStorage.getItem("nodosStock")) || [] 
+console.log(arrayNodos)
 //instancia
-const arrayNodos = figurasPokemon.map(figura=>{
-  return new NodoFigura(
-    figura.nombre,
-    figura.precio,
-    figura.imagen,
-    figura.tipo,
-    figura.stock,
-    figura.generacion,
-    figura.id
-  )
-})
+if(arrayNodos.length == 0){
+  arrayNodos = figurasPokemon.map(figura=>{
+    return new NodoFigura(
+      figura.nombre,
+      figura.precio,
+      figura.imagen,
+      figura.tipo,
+      figura.stock,
+      figura.generacion,
+      figura.id
+    )
+  })
+}else{
+  arrayNodos = arrayNodos.map(figura=>{
+    return new NodoFigura(
+      figura.nombre,
+      figura.precio,
+      figura.imagen,
+      figura.tipo,
+      figura.stock,
+      figura.generacion,
+      figura.id
+    )
+  })
+}
+console.log(arrayNodos)
 
 
 //Eliminar carrito
@@ -214,6 +230,7 @@ const bajaDeStock = (id)=>{
     return producto.id == id
   })
   arrayNodos[indice].stock = arrayNodos[indice].stock - 1
+  localStorage.setItem("nodosStock", JSON.stringify(arrayNodos) );
   actualizarPantalla()
 }
 
@@ -222,6 +239,7 @@ const actualizarPantalla = ()=>{
   arrayNodos.forEach(objeto=>{
     objeto.creadoraDeProductos(contenedorProductos, eventoAgregar)
   })
+  
 }
 
 
