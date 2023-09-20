@@ -1,0 +1,43 @@
+.contenedorTitulo {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vh;
+    color:green
+}
+
+
+.pizarra{
+    border: 1px solid black;
+    max-width: 90vw;
+    
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.contenedorOperario{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 10px auto;
+    border: 1px solid black;
+    width: 25%;
+    height: auto;
+    box-sizing: border-box;
+
+}
+
+
+
+.foto {
+
+    width: 80%;
+    height: auto;
+    
+
+}
+
