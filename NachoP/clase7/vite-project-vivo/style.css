@@ -25,24 +25,10 @@
   border-radius: 5px;
   box-shadow: 0px 0px 5px #000;
 }
-.contenedor-carrito{
-  height: 150px;
-  min-width: 270px;
-}
 
 img {
   width: 150px; 
   height: 150px; 
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0px 0px 5px #000;
-  transition: all 0.5s;
-  object-fit: cover; 
-}
-
-.contenedor-carrito img {
-  width: 100px; 
-  height: 100px; 
   border-radius: 50%;
   border: 2px solid #fff;
   box-shadow: 0px 0px 5px #000;
@@ -55,6 +41,20 @@ h1{
   text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.carrito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 80%;
+  padding: 5px;
+  margin: 5px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #000;
 }
 
 .carrito-contenedor{
@@ -87,4 +87,23 @@ h1{
 
 .modalOff{
   display: none;
+}
+
+.contenedor-carrito{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 300px;
+}
+
+.contenedor-carrito img {
+  width: 100px; 
+  height: 100px; 
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 5px #000;
+  transition: all 0.5s;
+  object-fit: cover; 
 }
