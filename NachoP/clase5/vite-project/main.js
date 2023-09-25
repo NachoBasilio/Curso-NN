@@ -211,10 +211,7 @@ const agregarAlCarrito = ()=>{
   contenedorCarrito.innerText = ""
   carrito.forEach((figura)=>{
 
-
-    
     figura.creadoraDeProductosCarrito(contenedorCarrito, eventoEliminar)
-    
 
   })
 }
@@ -231,17 +228,11 @@ const eventoAgregar = (referencia)=>{
     referencia.stockCarrito = referencia.stockCarrito + 1
     agregarAlCarrito()
   }
-
-  
-  
 }
 
 arrayNodos.forEach(objeto=>{
   objeto.creadoraDeProductos(contenedorProductos, eventoAgregar)
 })
-
-
-
 
 app.appendChild(contenedorProductos)
 app.appendChild(contenedorCarrito)
