@@ -5,14 +5,13 @@
     color:green
 }
 
-
 .pizarra{
     border: 1px solid black;
     max-width: 90vw;
-    
-    
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
+    flex-direction: row;
 }
 
 
@@ -31,12 +30,15 @@
 
 }
 
-
+p {
+    margin-left: 3px;
+}
 
 .foto {
 
-    width: 80%;
-    height: auto;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 3vh;
     
 
 }

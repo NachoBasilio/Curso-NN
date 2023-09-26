@@ -68,7 +68,7 @@ trabajadores.forEach(trabajador => {
     const nombreElemento = document.createElement("p");
     nombreElemento.innerText = `Nombre: ${trabajador.nombre}`;
     const dniElemento = document.createElement("p");
-    dniElemento.innerText = `DNI: ${trabajador.dni}`;
+    dniElemento.innerText = ` DNI: ${trabajador.dni}`;
     const fechaNacElemento = document.createElement("p");
     fechaNacElemento.innerText = `Fecha de nacimiento: ${trabajador.fechaNac}`;
     const telefonoElemento = document.createElement("p");
@@ -89,11 +89,8 @@ fichaTrabajador.appendChild(fotoElemento);
 
 fichasTrabajadores.appendChild(fichaTrabajador);
 
-
 })
 }
-
-
 
 agregarTrabajador("Nuevo Trabajador", "12345678", "01/01/1990", "1234567890", "Nuevo Puesto", "https://imgs.search.brave.com/IHtJdCP-zDqem_uiseeSEVFwA_s4Fa6jLjsQcefI5T4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/bmF0aW9uYWxnZW9n/cmFwaGljLmNvbS5l/cy9tZWRpby8yMDIz/LzA2LzAyL29zby1w/aXJlbmFpY28tbnVl/dmEtMjUtYW5pdmVy/c2FyaW9fMDAwMDAw/MDBfYmRjNjc3NTZf/MjMwNjAyMTI0ODQx/XzgwMHg4MDAuanBn");
 

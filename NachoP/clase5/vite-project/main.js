@@ -228,10 +228,7 @@ const agregarAlCarrito = ()=>{
   contenedorCarrito.innerText = ""
   carrito.forEach((figura)=>{
 
-
-    
     figura.creadoraDeProductosCarrito(contenedorCarrito, eventoEliminar)
-    
 
   })
 }
@@ -254,6 +251,8 @@ arrayNodos.forEach(objeto=>{
   objeto.creadoraDeProductos(contenedorProductos, eventoAgregar)
 })
 
+<<<<<<< HEAD
+=======
 
 
 const botonCarrito = document.createElement("button")
@@ -279,6 +278,7 @@ botonCerra.addEventListener("click", ()=>{
 
 
 
+>>>>>>> 1e7bd3a53461ce360afa9152d5d17ada27097949
 app.appendChild(contenedorProductos)
 app.appendChild(modalContenedor)
 app.appendChild(botonCarrito)
