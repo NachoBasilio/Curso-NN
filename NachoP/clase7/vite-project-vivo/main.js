@@ -33,11 +33,10 @@ modal.appendChild(botonModal)
 
 
 
-const carrito = JSON.parse(localStorage.getItem("carrito")) || [] 
 
 
 class NodoFigura {
-  constructor(nombre, precio, imagen, tipo, stock, generacion, id) {
+  constructor(nombre, precio, imagen, tipo, stock, generacion, id, stockCarrito) {
     this.nombre = nombre
     this.precio = precio
     this.imagen = imagen
@@ -45,7 +44,7 @@ class NodoFigura {
     this.stock = stock
     this.generacion = generacion
     this.id = id
-    this.stockCarrito = 1
+    this.stockCarrito = stockCarrito || 1
   }
 
   creadoraDeProductos(nodoPadre, evento){
@@ -127,7 +126,6 @@ class NodoFigura {
 }
 
 let arrayNodos = JSON.parse(localStorage.getItem("nodosStock")) || [] 
-console.log(arrayNodos)
 //instancia
 if(arrayNodos.length == 0){
   arrayNodos = figurasPokemon.map(figura=>{
@@ -154,8 +152,30 @@ if(arrayNodos.length == 0){
     )
   })
 }
-console.log(arrayNodos)
 
+
+const instaciarCarritoDelLocal = ()=>{
+  let carrito = JSON.parse(localStorage.getItem("carrito")) || [] 
+
+  carrito = carrito.map(figura=>{
+    console.log(figura)
+    return new NodoFigura(
+      figura.nombre,
+      figura.precio,
+      figura.imagen,
+      figura.tipo,
+      figura.generacion,
+      figura.stock,
+      figura.id,
+      figura.stockCarrito,
+    )
+  })
+
+  return carrito
+
+}
+
+const carrito = instaciarCarritoDelLocal()
 
 //Eliminar carrito
 
@@ -164,6 +184,8 @@ const eventoEliminar = (id)=>{
     return producto.id == id
   })
   
+  AumentoDeStock(id)
+
   if(carrito[idAEliminar].stockCarrito > 1){
     carrito[idAEliminar].stockCarrito = carrito[idAEliminar].stockCarrito -1
   }else{
@@ -189,6 +211,7 @@ const eventoAgregar = (referencia)=>{
     referencia.stockCarrito = referencia.stockCarrito + 1
     ActualizarAlCarrito()
   }
+  
 }
 
 
@@ -199,11 +222,17 @@ const ActualizarAlCarrito = ()=>{
     carrito.forEach((figura)=>{  
       figura.creadoraDeProductosCarrito(contenedorCarrito, eventoEliminar)
       })
+      
   }else{
     contenedorCarrito.innerText = "No hay nada en el carrito aun"
+    
   }
-
+  
+  localStorage.setItem("carrito", JSON.stringify(carrito) );  
 }
+
+
+
 
 
 //Logica del boton
@@ -229,10 +258,32 @@ const bajaDeStock = (id)=>{
   const indice = arrayNodos.findIndex((producto)=>{
     return producto.id == id
   })
+
+
+
   arrayNodos[indice].stock = arrayNodos[indice].stock - 1
+
+
+  
   localStorage.setItem("nodosStock", JSON.stringify(arrayNodos) );
   actualizarPantalla()
 }
+
+const AumentoDeStock = (id)=>{
+  const indice = arrayNodos.findIndex((producto)=>{
+    return producto.id == id
+  })
+
+
+
+  arrayNodos[indice].stock = arrayNodos[indice].stock + 1
+
+
+  
+  localStorage.setItem("nodosStock", JSON.stringify(arrayNodos));
+  actualizarPantalla()
+}
+
 
 const actualizarPantalla = ()=>{
   contenedorProductos.innerText = ""
