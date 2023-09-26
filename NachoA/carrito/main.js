@@ -2,6 +2,10 @@ const root = document.getElementById("root");
 
 import { productos } from "./productos";
 
+
+const tablaTrabajo = document.createElement("div");
+
+
 class NodoProductos {
   constructor (tipo, modelo, marca, stock, precio, foto ){
     this.tipo = tipo;
@@ -17,27 +21,27 @@ class NodoProductos {
     const contenedorProducto = document.createElement("div");
 
     const contenedorTipo = document.createElement("p");
-    contenedorTipo.innerText = `Tipo: ${productos.tipo}`;
+    contenedorTipo.innerText = `Tipo: ${this.tipo}`;
     contenedorTipo.classList.add("tipo");
-
+    
     const contenedorModelo = document.createElement("p");
-    contenedorModelo.innerText = `Modelo: ${productos.modelo}`;
+    contenedorModelo.innerText = `Modelo: ${this.modelo}`;
     contenedorTipo.classList.add("modelo");
 
     const contenedorMarca = document.createElement("p");
-    contenedorMarca.innerText = `Marca: ${productos.marca}`;
+    contenedorMarca.innerText = `Marca: ${this.marca}`;
     contenedorTipo.classList.add("marca");
 
     const contenedorStock = document.createElement("p");
-    contenedorStock.innerText = `Stock: ${productos.stock}`;
+    contenedorStock.innerText = `Stock: ${this.stock}`;
     contenedorTipo.classList.add("stock");
 
     const contenedorPrecio = document.createElement("p");
-    contenedorPrecio.innerText = `Precio: ${productos.precio}`;
+    contenedorPrecio.innerText = `Precio: ${this.precio}`;
     contenedorTipo.classList.add("precio");
 
     const contenedorImagen = document.createElement("img");
-    contenedorImagen.src = `${productos.foto}`;
+    contenedorImagen.src = `${this.foto}`;
     contenedorTipo.classList.add("foto");
 
     contenedorProducto.appendChild(contenedorTipo);
@@ -49,7 +53,6 @@ class NodoProductos {
 
     return contenedorProducto;
   }
-
   }
 
 const productosArray = productos.map((producto)=>{
@@ -61,10 +64,15 @@ const productosArray = productos.map((producto)=>{
     producto.precio,
     producto.foto
   );
-  
 });
 
+productosArray.forEach(objeto =>{
+  const nodoProducto = objeto.creadorNodoProductos();
+  tablaTrabajo.appendChild(nodoProducto);
+  const separador1 = document.createElement("br");
+  const separador2 = document.createElement("hr");
+  tablaTrabajo.appendChild(separador1);
+  tablaTrabajo.appendChild(separador2);
+})
 
-productosArray.forEach((producto) => {
-  root.appendChild(producto.creadorNodoProductos()); // Cambiar "crearNodoProducto" a "creadorNodoProductos"
-});
+root.appendChild(tablaTrabajo);
