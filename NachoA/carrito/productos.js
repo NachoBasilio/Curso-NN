@@ -72,4 +72,12 @@ export const productos = [
         precio: 220,
         foto: "https://lellinsumos.com.ar/wp-content/uploads/2021/11/D_NQ_NP_665399-MLA43737132459_102020-O.jpg"
     },
+    {
+        tipo: "colorado",
+        modelo: "colo 2.0",
+        marca: "coloradisimo",
+        stock: 450,
+        precio: 1,
+        foto: "https://img.soy-chile.cl/Fotos/2018/12/02/file_20181202152826.jpg"
+    },
 ]
