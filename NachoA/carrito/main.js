@@ -4,6 +4,7 @@ import { productos } from "./productos";
 
 
 const tablaTrabajo = document.createElement("div");
+tablaTrabajo.classList.add("tablaTrabajo");
 
 
 class NodoProductos {
@@ -19,6 +20,7 @@ class NodoProductos {
   creadorNodoProductos () {
     
     const contenedorProducto = document.createElement("div");
+    contenedorProducto.classList.add("contenedorProducto");
 
     const contenedorTipo = document.createElement("p");
     contenedorTipo.innerText = `Tipo: ${this.tipo}`;
@@ -26,23 +28,23 @@ class NodoProductos {
     
     const contenedorModelo = document.createElement("p");
     contenedorModelo.innerText = `Modelo: ${this.modelo}`;
-    contenedorTipo.classList.add("modelo");
+    contenedorModelo.classList.add("modelo");
 
     const contenedorMarca = document.createElement("p");
     contenedorMarca.innerText = `Marca: ${this.marca}`;
-    contenedorTipo.classList.add("marca");
+    contenedorMarca.classList.add("marca");
 
     const contenedorStock = document.createElement("p");
     contenedorStock.innerText = `Stock: ${this.stock}`;
-    contenedorTipo.classList.add("stock");
+    contenedorStock.classList.add("stock");
 
     const contenedorPrecio = document.createElement("p");
     contenedorPrecio.innerText = `Precio: ${this.precio}`;
-    contenedorTipo.classList.add("precio");
+    contenedorPrecio.classList.add("precio");
 
     const contenedorImagen = document.createElement("img");
     contenedorImagen.src = `${this.foto}`;
-    contenedorTipo.classList.add("foto");
+    contenedorImagen.classList.add("foto");
 
     contenedorProducto.appendChild(contenedorTipo);
     contenedorProducto.appendChild(contenedorModelo);
@@ -69,10 +71,6 @@ const productosArray = productos.map((producto)=>{
 productosArray.forEach(objeto =>{
   const nodoProducto = objeto.creadorNodoProductos();
   tablaTrabajo.appendChild(nodoProducto);
-  const separador1 = document.createElement("br");
-  const separador2 = document.createElement("hr");
-  tablaTrabajo.appendChild(separador1);
-  tablaTrabajo.appendChild(separador2);
 })
 
 root.appendChild(tablaTrabajo);

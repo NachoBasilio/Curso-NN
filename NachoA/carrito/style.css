@@ -1,0 +1,30 @@
+
+.tablaTrabajo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+
+.contenedorProducto {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    width:200px;
+    height:400px ;
+    min-width: 10%;
+    min-height: 20%;
+    border: 2px solid rgb(87, 5, 5);
+    flex-direction: row;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+    
+}
+
+.foto {
+    width: 95%;
+    height: auto;
+    padding: 3px;
+}
