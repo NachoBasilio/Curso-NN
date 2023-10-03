@@ -6,6 +6,7 @@ import { productos } from "./productos";
 const tablaTrabajo = document.createElement("div");
 tablaTrabajo.classList.add("tablaTrabajo");
 
+const carrito = [];
 
 class NodoProductos {
   constructor (tipo, modelo, marca, stock, precio, foto ){
@@ -17,7 +18,7 @@ class NodoProductos {
     this.foto = foto
   }
 
-  creadorNodoProductos () {
+  creadorNodoProductos (evento) {
     
     const contenedorProducto = document.createElement("div");
     contenedorProducto.classList.add("contenedorProducto");
@@ -46,16 +47,24 @@ class NodoProductos {
     contenedorImagen.src = `${this.foto}`;
     contenedorImagen.classList.add("foto");
 
+    const boton = document.createElement("button")
+    boton.innerText="Comprar!";
+    boton.classList.add("botonProducto");
+    boton.addEventListener("click", ()=>{
+      evento(this);
+    })
+
     contenedorProducto.appendChild(contenedorTipo);
     contenedorProducto.appendChild(contenedorModelo);
     contenedorProducto.appendChild(contenedorMarca);
     contenedorProducto.appendChild(contenedorImagen);
     contenedorProducto.appendChild(contenedorPrecio);
     contenedorProducto.appendChild(contenedorStock);
+    contenedorProducto.appendChild(boton);
 
     return contenedorProducto;
   }
-  }
+}
 
 const productosArray = productos.map((producto)=>{
   return new NodoProductos(
@@ -72,5 +81,10 @@ productosArray.forEach(objeto =>{
   const nodoProducto = objeto.creadorNodoProductos();
   tablaTrabajo.appendChild(nodoProducto);
 })
+
+const eventoAgregar = (referencia) =>{
+  carrito.push(referencia);
+  console.log(carrito);
+}
 
 root.appendChild(tablaTrabajo);

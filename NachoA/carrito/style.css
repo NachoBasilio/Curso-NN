@@ -9,7 +9,7 @@
 }
 
 .contenedorProducto {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     margin: 10px;
     width:200px;
@@ -19,8 +19,16 @@
     border: 2px solid rgb(87, 5, 5);
     flex-direction: row;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    align-items: center;
+
+    justify-content: center;
 
     
+}
+
+.botonProducto {
+    display:block;
+    padding:auto;
 }
 
 .foto {
