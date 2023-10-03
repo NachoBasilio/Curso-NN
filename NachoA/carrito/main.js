@@ -77,14 +77,16 @@ const productosArray = productos.map((producto)=>{
   );
 });
 
-productosArray.forEach(objeto =>{
-  const nodoProducto = objeto.creadorNodoProductos();
-  tablaTrabajo.appendChild(nodoProducto);
-})
-
 const eventoAgregar = (referencia) =>{
   carrito.push(referencia);
   console.log(carrito);
 }
+
+productosArray.forEach(objeto =>{
+  const nodoProducto = objeto.creadorNodoProductos(eventoAgregar);
+  tablaTrabajo.appendChild(nodoProducto);
+})
+
+
 
 root.appendChild(tablaTrabajo);
