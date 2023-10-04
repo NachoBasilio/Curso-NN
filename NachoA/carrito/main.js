@@ -6,6 +6,9 @@ import { productos } from "./productos";
 const tablaTrabajo = document.createElement("div");
 tablaTrabajo.classList.add("tablaTrabajo");
 
+const contenedorCarrito = document.createElement("div");
+contenedorCarrito.classList.add("carrito");
+
 const carrito = [];
 
 class NodoProductos {
@@ -77,9 +80,24 @@ const productosArray = productos.map((producto)=>{
   );
 });
 
+
+const agregarAlCarrito = ()=>{
+  contenedorCarrito.innerHTML = '';
+  carrito.forEach(nodo =>{
+    const nodoProductoEnCarrito = nodo.creadorNodoProductos();
+    const botonComprar = nodoProductoEnCarrito.querySelector(".botonProducto")
+    if (botonComprar){
+      botonComprar.remove();
+    }
+    contenedorCarrito.appendChild(nodoProductoEnCarrito)
+  })
+  }
+
+
 const eventoAgregar = (referencia) =>{
   carrito.push(referencia);
-  console.log(carrito);
+  agregarAlCarrito();
+  
 }
 
 productosArray.forEach(objeto =>{
@@ -87,6 +105,5 @@ productosArray.forEach(objeto =>{
   tablaTrabajo.appendChild(nodoProducto);
 })
 
-
-
 root.appendChild(tablaTrabajo);
+root.appendChild(contenedorCarrito);
