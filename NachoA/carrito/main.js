@@ -83,15 +83,31 @@ const productosArray = productos.map((producto)=>{
 
 const agregarAlCarrito = ()=>{
   contenedorCarrito.innerHTML = '';
-  carrito.forEach(nodo =>{
+  carrito.forEach((nodo, index) =>{
     const nodoProductoEnCarrito = nodo.creadorNodoProductos();
-    const botonComprar = nodoProductoEnCarrito.querySelector(".botonProducto")
-    if (botonComprar){
-      botonComprar.remove();
-    }
+    
+      // Eliminar el botón "Comprar"
+      const botonComprar = nodoProductoEnCarrito.querySelector(".botonProducto");
+      if (botonComprar) {
+        botonComprar.remove();
+      }
+
+    //boton eliminar:
+    const botonEliminar = document.createElement("button");
+    botonEliminar.innerText = "Eliminar";
+    botonEliminar.classList.add("botonEliminar");
+
+    //evento que elimina producto del carrito:
+    botonEliminar.addEventListener("click",()=>{
+      carrito.splice(index,1);
+      agregarAlCarrito();
+    })
+
+    nodoProductoEnCarrito.appendChild(botonEliminar)
+
     contenedorCarrito.appendChild(nodoProductoEnCarrito)
   })
-  }
+}
 
 
 const eventoAgregar = (referencia) =>{
