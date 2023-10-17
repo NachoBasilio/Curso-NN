@@ -6,6 +6,10 @@ import { productos } from "./productos";
 const tablaTrabajo = document.createElement("div");
 tablaTrabajo.classList.add("tablaTrabajo");
 
+const contenedorCarrito = document.createElement("div");
+contenedorCarrito.classList.add("carrito");
+
+const carrito = [];
 
 class NodoProductos {
   constructor (tipo, modelo, marca, stock, precio, foto ){
@@ -17,7 +21,7 @@ class NodoProductos {
     this.foto = foto
   }
 
-  creadorNodoProductos () {
+  creadorNodoProductos (evento) {
     
     const contenedorProducto = document.createElement("div");
     contenedorProducto.classList.add("contenedorProducto");
@@ -46,16 +50,24 @@ class NodoProductos {
     contenedorImagen.src = `${this.foto}`;
     contenedorImagen.classList.add("foto");
 
+    const boton = document.createElement("button")
+    boton.innerText="Comprar!";
+    boton.classList.add("botonProducto");
+    boton.addEventListener("click", ()=>{
+      evento(this);
+    })
+
     contenedorProducto.appendChild(contenedorTipo);
     contenedorProducto.appendChild(contenedorModelo);
     contenedorProducto.appendChild(contenedorMarca);
     contenedorProducto.appendChild(contenedorImagen);
     contenedorProducto.appendChild(contenedorPrecio);
     contenedorProducto.appendChild(contenedorStock);
+    contenedorProducto.appendChild(boton);
 
     return contenedorProducto;
   }
-  }
+}
 
 const productosArray = productos.map((producto)=>{
   return new NodoProductos(
@@ -68,9 +80,46 @@ const productosArray = productos.map((producto)=>{
   );
 });
 
+
+const agregarAlCarrito = ()=>{
+  contenedorCarrito.innerHTML = '';
+  carrito.forEach((nodo, index) =>{
+    const nodoProductoEnCarrito = nodo.creadorNodoProductos();
+    
+      // Eliminar el botón "Comprar"
+      const botonComprar = nodoProductoEnCarrito.querySelector(".botonProducto");
+      if (botonComprar) {
+        botonComprar.remove();
+      }
+
+    //boton eliminar:
+    const botonEliminar = document.createElement("button");
+    botonEliminar.innerText = "Eliminar";
+    botonEliminar.classList.add("botonEliminar");
+
+    //evento que elimina producto del carrito:
+    botonEliminar.addEventListener("click",()=>{
+      carrito.splice(index,1);
+      agregarAlCarrito();
+    })
+
+    nodoProductoEnCarrito.appendChild(botonEliminar)
+
+    contenedorCarrito.appendChild(nodoProductoEnCarrito)
+  })
+}
+
+
+const eventoAgregar = (referencia) =>{
+  carrito.push(referencia);
+  agregarAlCarrito();
+  
+}
+
 productosArray.forEach(objeto =>{
-  const nodoProducto = objeto.creadorNodoProductos();
+  const nodoProducto = objeto.creadorNodoProductos(eventoAgregar);
   tablaTrabajo.appendChild(nodoProducto);
 })
 
 root.appendChild(tablaTrabajo);
+root.appendChild(contenedorCarrito);
