@@ -1,0 +1,81 @@
+.todo{
+    height: 100vh;
+    background-image: url(./assets/fondoListas.jpg);
+    background-size: cover;
+    background-position: center;
+    
+}
+
+.main {
+    display: inline;
+}
+
+.titulo1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    text-decoration: underline 2px;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    /* margin-top: 50px; */
+    padding: 30px;
+    border: 1px solid brown;
+    background-color: burlywood;
+}
+
+.main p {
+    font-size: 25px;
+    color: beige;
+}
+
+
+.listasCreadas{
+    display: flex;
+    margin: 15px;
+    border: 1px solid black;
+    background-color: rgb(170, 168, 114);
+    
+}
+
+.areaTrabajo{
+    display: inline;
+    width: 100vw;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+
+}
+
+.listaNueva{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid black;
+
+}
+
+
+.areaTrabajo .lista{
+    font-size: 20px;
+    margin: 15px;
+}
+
+.areaTrabajo button{
+
+    height: 20px;
+    margin: 5px;
+
+}
+
+
+.realizado {
+    display: inline-block;
+    margin: 10px;
+    max-width: 800px;
+    background-color: green;
+    font-weight: bold;
+    font-style: italic;
+}
